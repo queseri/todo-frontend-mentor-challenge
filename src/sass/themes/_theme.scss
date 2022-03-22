@@ -1,0 +1,16 @@
+.hide-theme-img {
+    display: none;
+}
+
+.btn-theme-control {
+    background-color: transparent;
+    border: none;
+    outline: none;
+
+    &:focus,
+    &:hover {
+        cursor: pointer;
+        outline: dashed white;
+        outline-offset: 0.15em;
+    }
+}

@@ -1,0 +1,34 @@
+@use '../utils';
+.header {
+    background-image: url('../../images/bg-mobile-light.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    @include utils.mQ(38.75rem) {
+        background-image: url('../../images/bg-desktop-light.jpg');
+    }
+}
+
+.header {
+	padding-block: 3rem;
+    padding-inline: 1.625rem;
+}
+
+.main-title {
+    color: hsla(0, 0%, 100%, 1);
+    text-transform: uppercase;
+}
+
+.form {
+    position: relative;
+}
+
+.btn-submit {    
+    position: absolute;
+    left: 0;
+    top: 50%;
+	padding: .5rem;
+	border-radius: 50%;
+	border: none;
+	background: red;	
+}
