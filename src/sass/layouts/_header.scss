@@ -1,4 +1,5 @@
 @use '../utils';
+
 .header {
     background-image: url('../../images/bg-mobile-light.jpg');
     background-repeat: no-repeat;
@@ -10,7 +11,7 @@
 }
 
 .header {
-	padding-block: 3rem;
+    padding-block: 3rem;
     padding-inline: 1.625rem;
 }
 
@@ -21,14 +22,40 @@
 
 .form {
     position: relative;
+    margin-block-start: 2.5rem;
 }
 
-.btn-submit {    
+.lbl-new-todo {
+	position: absolute;
+	left: 2rem;
+	top: -1rem;
+    transform-origin: top left;
+    transform: translate(1rem, 1.5rem) scale(1);
+    transition: all 0.1s ease-in-out;
+}
+
+.new-todo {
+    width: 100%;
+    padding-inline: 1rem;
+    padding-block: .5rem;
+    border-radius: 15px;
+    outline: none;
+    border: none;
+    padding-inline-start: 3rem;
+}
+
+.btn-submit {
     position: absolute;
     left: 0;
     top: 50%;
-	padding: .5rem;
-	border-radius: 50%;
-	border: none;
-	background: red;	
+    padding: .5rem;
+    border-radius: 50%;
+    border: none;
+    background: red;
+}
+
+.search-container.active {
+    .lbl-new-todo {        
+        top: -3.5rem;
+    }
 }
