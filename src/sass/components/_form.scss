@@ -1,0 +1,47 @@
+.form {
+    position: relative;  
+    top: -4rem;
+}
+
+.lbl-new-todo {
+    position: absolute;
+    left: 2rem;
+    top: -1rem;
+    transform-origin: top left;
+    transform: translate(1rem, 1.5rem) scale(1);
+    transition: all 0.1s ease-in-out;
+}
+
+.new-todo {
+    width: 100%;
+    padding-inline: 1rem;
+    padding-block: .5rem;
+    border-radius: 15px;
+    outline: none;
+    border: none;
+    padding-inline-start: 3rem;
+}
+
+.btn-submit {
+    position: absolute;
+    left: 1rem;
+    top: 30%;
+    padding: .5rem;
+    border-radius: 50%;
+    border: none;
+    background: transparent;
+    border: 1px solid black;
+
+    &:focus,
+    &:hover {
+        cursor: pointer;
+        outline: dashed white;
+        outline-offset: 0.15em;
+    }
+}
+
+.search-container.active {
+    .lbl-new-todo {
+        top: -3.5rem;
+    }
+}
