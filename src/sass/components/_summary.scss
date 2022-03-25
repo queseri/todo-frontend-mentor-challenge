@@ -1,0 +1,8 @@
+.summary {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.completed {
+	grid-area: 1/1/1/3;
+}
+

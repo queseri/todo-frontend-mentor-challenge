@@ -1,5 +1,7 @@
+@use '../base';
+
 .form {
-    position: relative;  
+    position: relative;
     top: -4rem;
 }
 
@@ -44,4 +46,56 @@
     .lbl-new-todo {
         top: -3.5rem;
     }
+}
+
+input[type="checkbox"] {
+    /* Add if not using autoprefixer */
+    -webkit-appearance: none;
+    appearance: none;
+    /* For iOS < 15 to remove gradient background */
+    background-color: #fff;
+    /* Not removed via appearance */
+    margin: 0;
+    font: inherit;
+    color: currentColor;
+    width: 2em;
+    height: 2em;
+    border: 0.15em solid currentColor;
+    border-radius: 0.15em;
+    transform: translateY(-0.075em);
+    border-radius: 50%;
+
+    display: grid;
+  place-content: center;
+}
+
+input[type="checkbox"]::before {
+    content: "";
+    width: 1em;
+    height: 1em;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em base.$clr-dk-very-dark-blue;
+    background-color: CanvasText;
+    transform-origin: bottom left;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+   
+  }
+
+  input[type="checkbox"]:checked::before {
+    transform: scale(1);
+    background-image: base.$clr-check-background;
+  }
+
+  input[type="checkbox"]:focus {
+  //  outline: max(2px, 0.15em) solid currentColor;
+  //  outline-offset: max(2px, 0.15em);
+  }
+
+.todo + .todo {
+   margin-top: 1em;
+  }
+
+input[type="checkbox"]:checked {
+  //  background-image: base.$clr-check-background;
 }

@@ -2,11 +2,18 @@ import React from 'react'
 
 function FilterButton(props) {
     return (
-        <button type="button" className="btn toggle-btn" aria-pressed={props.pressed}>
-            <span className="sr-only">Show </span>
-            <span>{props.currentState}</span>
-            <span className="sr-only"> tasks</span>
-        </button>
+
+        <div className='filter-group'>
+            < input type="radio"
+                name="rbt"
+                className='filter-button'
+                id={props.name}
+                value={props.name}
+                defaultChecked={props.isPressed}
+                onChange={() => props.setFilter(props.name)} />
+            <label htmlFor={props.name} className='label-filters'>{props.name}</label>
+        </div>
+
     )
 }
 
