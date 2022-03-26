@@ -1,4 +1,5 @@
 @use '../base';
+@use '../utils';
 
 .form {
     position: relative;
@@ -10,7 +11,7 @@
     left: 2rem;
     top: -1rem;
     transform-origin: top left;
-    transform: translate(1rem, 1.5rem) scale(1);
+    transform: translate(1rem, 1.8rem) scale(1);
     transition: all 0.1s ease-in-out;
 }
 
@@ -34,7 +35,7 @@
     border-radius: 50%;
     border: none;
     background: transparent;
-    border: 1px solid base.$clr-very-light-gray;
+    border: 1px solid base.$clr-dk-dark-grayish-blue;
 
     &:focus,
     &:hover {
@@ -69,6 +70,11 @@ input[type="checkbox"] {
 
     display: grid;
     place-content: center;
+
+    @include utils.mQ(43.75rem) {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
 }
 
 input[type="checkbox"]::before {
@@ -91,6 +97,10 @@ input[type="checkbox"]:checked::before {
 
 .todo-label {
     font-size: 0.75rem;
+
+    @include utils.mQ(43.75rem) {
+        font-size: 1.125rem;
+    }
 }
 
 input[type="checkbox"]:focus {

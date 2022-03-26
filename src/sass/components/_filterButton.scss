@@ -1,8 +1,15 @@
+@use '../base';
+@use '../utils';
+
 .filters-container {
     display: flex;
     justify-content: space-around;
     gap: 1rem;
     grid-area: 2/1/2/5;
+
+    @include utils.mQ(43.75rem) {
+        grid-area: 1/2/1/4;
+    }
 }
 
 .filter-group {
@@ -22,12 +29,35 @@
         outline: dashed currentColor;
         outline-offset: 0.15em;
     }
+
+    @include utils.mQ(43.75rem) {
+        grid-area: 1/4/1/6;
+    }
 }
 
 .label-filters {
     position: absolute;
     left: 0;
-    background: red;
+    text-align: center;
     width: 100%;
     top: 0;
+}
+
+.filter-button {
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+}
+
+input[type="radio"] {
+
+    &:focus,
+    &:hover {
+        cursor: pointer;
+
+        +label {
+            outline: dashed black;
+            outline-offset: 0.15em;
+        }
+    }
 }

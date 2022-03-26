@@ -1,3 +1,6 @@
+@use '../base';
+@use '../utils';
+
 .main {
     position: relative;
     padding-inline: 1.5rem;
@@ -7,6 +10,6 @@
 
 .todo-container {
     display: grid;
-    grid-template-columns: 1fr 4fr 1fr 1fr;
+    grid-template-columns: 1fr 9fr 1fr 1fr;
 	gap: 1rem;
 }

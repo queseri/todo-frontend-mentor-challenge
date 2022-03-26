@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
+import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import { nanoid } from "nanoid";
 import FilterButton from './FilterButton';
 import Todo from './Todo'
 import Form from './Form';
 
 function Main(props) {
-    console.log(props)
+    // console.log(props)
     const [tasks, setTasks] = useState(props.tasks)
-    const [filter, setFilter] = useState('All');
+    const [filter, setFilter] = useState('All')
 
     const FILTER_MAP = {
         All: () => true,
@@ -16,7 +17,7 @@ function Main(props) {
     };
 
     const FILTER_NAMES = Object.keys(FILTER_MAP);
-    console.log(FILTER_NAMES)
+    //  console.log(FILTER_NAMES)
 
     function toggleTaskCompleted(id) {
         const updatedTasks = tasks.map(task => {
@@ -31,15 +32,12 @@ function Main(props) {
 
     function resetTask() {
         const allTodos = Array.from(document.querySelectorAll(".todo-item"))
-        const allLabels = Array.from(document.querySelectorAll(".todo-label"))
-        console.log(allLabels)
-        allTodos.forEach((todo, idx) => {
-            if (todo.checked) {
-                todo.checked = false
-                allLabels[idx].classList.remove("line-through")
-            }
+        const updatedTasks = tasks.map((task) => {
+            return { ...task, completed: false }
         })
-
+        console.log(tasks)
+        allTodos.forEach(todo => todo.checked = false)
+        setTasks(updatedTasks)
     }
 
     function deleteTask(id) {
@@ -59,12 +57,13 @@ function Main(props) {
 
     const taskList = tasks
         .filter(FILTER_MAP[filter])
-        .map(task => (
+        .map((task, idx) => (
             <Todo
+                key={task.id}
                 id={task.id}
+                index={idx}
                 name={task.name}
                 completed={task.completed}
-                key={task.id}
                 toggleTaskCompleted={toggleTaskCompleted}
                 deleteTask={deleteTask}
                 editTask={editTask}
@@ -89,18 +88,37 @@ function Main(props) {
         setTasks([...tasks, newTask]);
     }
 
+    function handleOnDragEnd(result) {
+        if (!result.destination) return
+        const items = Array.from(tasks)      
+        const [reorderedItems] = items.splice(result.source.index, 1)
+        items.splice(result.destination.index, 0, reorderedItems)       
+        setTasks(items)
+    }
+
     const tasksNoun = taskList.length !== 1 ? 'tasks' : 'task'
     const headingTitle = `${taskList.length} ${tasksNoun} left`
 
     return (
         <div className='main'>
             <Form addTask={addTask} />
-            <ul className='todo-list'>
-                {taskList}
-            </ul>
+            <DragDropContext onDragEnd={handleOnDragEnd}>
+                <Droppable droppableId='tasks'>
+                    {(provided) => (
+                        <ul className='todo-list'
+                            {...provided.droppableProps}
+                            ref={provided.innerRef}>
+                            {taskList}
+                            {provided.placeholder}
+                        </ul>
+
+                    )}
+
+                </Droppable>
+            </DragDropContext>
 
             <div className='summary'>
-                <h2 className='completed'>{headingTitle}</h2>
+                <p className='completed'>{headingTitle}</p>
                 <div className='filters-container'>
                     {filterList}
                 </div>

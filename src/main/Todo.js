@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Draggable } from 'react-beautiful-dnd';
 import Cross from '../images/icon-cross.svg'
 
 function Todo(props) {
@@ -18,7 +19,6 @@ function Todo(props) {
         setEditing(false);
     }
 
-   
 
     const editingTemplate = (
         <form className="todo-container" onSubmit={handleSubmit}>
@@ -72,9 +72,16 @@ function Todo(props) {
     )
 
     return (
-        <li className='todo'>
-            {isEditing ? editingTemplate : viewTemplate}
-        </li>
+        <Draggable key={props.id} draggableId={props.id} index={props.index}>
+            {(provided) => (
+                <li className='todo'
+                    {...provided.draggableProps}
+                    {...provided.dragHandleProps}
+                    ref={provided.innerRef} >
+                    {isEditing ? editingTemplate : viewTemplate}
+                </li>
+            )}
+        </Draggable>
     )
 }
 

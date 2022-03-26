@@ -15,8 +15,7 @@ function Form(props) {
             return
         }
         props.addTask(name)
-        setName("")
-        console.log("name added")
+        setName("")       
     }
 
     const handleFocus = (evt) => {
@@ -31,8 +30,7 @@ function Form(props) {
         }
     }
 
-    useEffect(() => {
-        console.log(inputEl.current.value.trim("") === "")
+    useEffect(() => {      
         inputEl.current.value.trim("") !== "" ?
             inputEl.current.parentNode.classList.add('active') :
             inputEl.current.parentNode.classList.remove('active')       
