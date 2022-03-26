@@ -1,6 +1,8 @@
 @use '../utils';
 
 .header {
+    padding-block: 3rem;
+    padding-inline: 1.625rem;
     background-image: url('../../images/bg-mobile-light.jpg');
     background-repeat: no-repeat;
     background-size: cover;
@@ -12,12 +14,12 @@
     }
 }
 
-.header {
-    padding-block: 3rem;
-    padding-inline: 1.625rem;
-}
-
 .main-title {
     color: hsla(0, 0%, 100%, 1);
     text-transform: uppercase;
+}
+
+.nav {
+    max-width: 33.75rem;
+    margin-inline: auto;
 }

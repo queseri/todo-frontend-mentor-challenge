@@ -1,0 +1,21 @@
+.delete-btn,
+.btn-edit {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-size: .75rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    &:focus,
+    &:hover {
+        cursor: pointer;
+        outline: dashed currentColor;
+        outline-offset: 0.15em;
+    }
+}
+
+.btn-edit {
+	justify-content: flex-start;
+}

@@ -1,9 +1,12 @@
 .main {
-	position: relative;
-	padding-inline: 1.5rem;
+    position: relative;
+    padding-inline: 1.5rem;
+	max-width: 33.75rem;
+    margin-inline: auto;
 }
+
 .todo-container {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr 1fr;
+	gap: 1rem;
 }

@@ -13,7 +13,7 @@ function Header(props) {
 
     return (
         <header className='header'>
-            <nav className="flex">
+            <nav className="flex nav">
                 <h1 className='main-title'>Todo</h1>
                 <button className='btn btn-theme-control' aria-pressed={theme} onClick={themeControl}>
                     <span className='sr-only'>{"light theme"}</span>

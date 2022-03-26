@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { nanoid } from "nanoid";
 import FilterButton from './FilterButton';
 import Todo from './Todo'
@@ -27,6 +27,19 @@ function Main(props) {
             return task;
         })
         setTasks(updatedTasks)
+    }
+
+    function resetTask() {
+        const allTodos = Array.from(document.querySelectorAll(".todo-item"))
+        const allLabels = Array.from(document.querySelectorAll(".todo-label"))
+        console.log(allLabels)
+        allTodos.forEach((todo, idx) => {
+            if (todo.checked) {
+                todo.checked = false
+                allLabels[idx].classList.remove("line-through")
+            }
+        })
+
     }
 
     function deleteTask(id) {
@@ -76,7 +89,7 @@ function Main(props) {
         setTasks([...tasks, newTask]);
     }
 
-    const tasksNoun = taskList.length !== 1 ? 'tasks' : 'task';
+    const tasksNoun = taskList.length !== 1 ? 'tasks' : 'task'
     const headingTitle = `${taskList.length} ${tasksNoun} left`
 
     return (
@@ -91,10 +104,8 @@ function Main(props) {
                 <div className='filters-container'>
                     {filterList}
                 </div>
-                <p className='items-cleared'>Clear completed</p>
+                <button className='clear-items-btn' onClick={resetTask}>Clear completed</button>
             </div>
-
-
 
         </div>
     )

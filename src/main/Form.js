@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 
 function Form(props) {
-    const [name, setName] = useState("use hooks")
+    const [name, setName] = useState("")
     const inputEl = useRef(null)
     const handleChange = (evt) => {
         setName(evt.target.value)
