@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { nanoid } from "nanoid";
 import FilterButton from './FilterButton';
 import Todo from './Todo'
