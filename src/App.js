@@ -1,5 +1,5 @@
 import './sass/app.scss';
-import Header from './header/Header'
+import Header from './header/header'
 import Main from './main/Main';
 
 function App() {
