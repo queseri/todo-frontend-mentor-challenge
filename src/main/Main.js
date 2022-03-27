@@ -1,16 +1,15 @@
-import React, { useState , useContext } from 'react'
+import React, { useState } from 'react'
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import { nanoid } from "nanoid";
-import { ThemeContext } from '../context/context';
 import FilterButton from './FilterButton';
 import Todo from './Todo'
 import Form from './Form';
 
 function Main(props) {
-    const { theme } = useContext(ThemeContext) 
+  
     const [tasks, setTasks] = useState(props.tasks)
     const [filter, setFilter] = useState('All')
-    //console.log(theme)
+   
     const FILTER_MAP = {
         All: () => true,
         Active: task => !task.completed,
@@ -18,8 +17,7 @@ function Main(props) {
     };
 
     const FILTER_NAMES = Object.keys(FILTER_MAP);
-    //  console.log(FILTER_NAMES)
-
+    
     function toggleTaskCompleted(id) {
         const updatedTasks = tasks.map(task => {
             // if this task has the same ID as the edited task
