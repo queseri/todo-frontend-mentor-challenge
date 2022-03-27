@@ -10,10 +10,10 @@ function Form(props) {
     const handleSubmit = (evt) => {
         evt.preventDefault()
         console.log("event checked")
-        if (name === "") {
-            console.log("enter a task")
-            return
-        }
+        if (name === "") return alert("enter a valid todo")
+        if (name.length < 5) return alert ("A good todo item should have at least 5 letters")
+        if (name.length > 50) return alert ("Write a short todo item of less that 50 characters")
+        
         props.addTask(name)
         setName("")       
     }

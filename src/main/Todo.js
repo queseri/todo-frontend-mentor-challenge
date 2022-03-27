@@ -14,6 +14,9 @@ function Todo(props) {
         e.preventDefault();
 
         if (newName.trim("") === "") return alert("Enter a valid todo item")
+        if (newName.length < 5) return alert ("A good todo item should have at least 5 letters")
+        if (newName.length > 50) return alert ("Write a short todo item of less that 50 characters")
+        console.log(newName.length)
         props.editTask(props.id, newName);
         setNewName("");
         setEditing(false);
@@ -58,10 +61,10 @@ function Todo(props) {
                 {props.name}
             </label>
 
-            <button className="btn-edit"
+            <button className={`btn-edit ${!props.completed ? "btn-hide" : ""}`}
                 onClick={() => setEditing(true)}>Edit</button>
 
-            <button className="delete-btn"
+            <button className={`delete-btn ${!props.completed ? "btn-hide" : ""}`}
                 onClick={() => props.deleteTask(props.id)}>
                 <img src={Cross} alt="" />
                 <span className="sr-only">Delete a task</span>
