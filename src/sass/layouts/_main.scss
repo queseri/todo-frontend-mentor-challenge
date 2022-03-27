@@ -6,8 +6,9 @@
     padding-inline: 1.5rem;
     max-width: 33.75rem;
     margin-inline: auto;
-	margin-top: 3rem;
-	@include utils.mQ(21.875rem) {
+	margin-top: 5rem;
+
+	@include utils.mQ(22.5rem) {
         margin-top: 0;
     }
 
