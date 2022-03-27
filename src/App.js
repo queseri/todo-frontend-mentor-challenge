@@ -15,7 +15,7 @@ function App() {
  
 
   return (
-    <div className="app">
+    <div className="app light-theme">
       <Header/>
       <Main tasks={DATA} />
     </div>

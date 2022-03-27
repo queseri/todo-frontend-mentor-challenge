@@ -90,9 +90,9 @@ function Main(props) {
 
     function handleOnDragEnd(result) {
         if (!result.destination) return
-        const items = Array.from(tasks)      
+        const items = Array.from(tasks)
         const [reorderedItems] = items.splice(result.source.index, 1)
-        items.splice(result.destination.index, 0, reorderedItems)       
+        items.splice(result.destination.index, 0, reorderedItems)
         setTasks(items)
     }
 
@@ -122,7 +122,13 @@ function Main(props) {
                 <div className='filters-container'>
                     {filterList}
                 </div>
-                <button className='clear-items-btn' onClick={resetTask}>Clear completed</button>
+                <div className="container-btn-clear">
+                    <button className='clear-items-btn' onClick={resetTask}>Clear completed</button>
+                </div>
+            </div>
+            <div className="drag-and-drop">
+
+                <p className='instructions'>Drag and drop to reorder list</p>
             </div>
 
         </div>

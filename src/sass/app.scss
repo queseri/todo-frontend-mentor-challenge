@@ -3,7 +3,6 @@
 @use './themes';
 @use './components';
 @use './layouts';
-body {
- background-color: base.$clr-very-light-gray;
+body { 
     font-family: 'Josefin Sans', sans-serif;
 }
