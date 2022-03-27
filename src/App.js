@@ -1,8 +1,12 @@
+import React from 'react'
 import './sass/app.scss';
 import Header from './header/header'
+import { ThemeProvider } from './context/context';
+
 import Main from './main/Main';
 
 function App() {
+ 
   const DATA = [
     { id: "todo-0", name: "Complete online Javascript course", completed: true },
     { id: "todo-1", name: "Jog around the park 3x", completed: false },
@@ -12,13 +16,15 @@ function App() {
     { id: "todo-5", name: "Complete Frontend Mentor challenges", completed: false }
   ]
 
- 
+
 
   return (
-    <div className="app light-theme">
-      <Header/>
-      <Main tasks={DATA} />
-    </div>
+    <ThemeProvider>
+      <div className="app">
+        <Header />
+        <Main tasks={DATA} />
+      </div>
+    </ThemeProvider>
   );
 }
 

@@ -22,9 +22,11 @@ function Todo(props) {
         setEditing(false);
     }
 
+    //${props.theme ? "" : "dark-theme-form"}
 
     const editingTemplate = (
-        <form className="todo-container" onSubmit={handleSubmit}>
+        <form className={`todo-container`} 
+        onSubmit={handleSubmit}>
             <div className="form-group-edit">
                 <label className="todo-label" htmlFor={props.id}>
                     {`New name for "${props.name}"`}
@@ -49,7 +51,7 @@ function Todo(props) {
     );
 
     const viewTemplate = (
-        <div className='todo-container'>
+        <div className={`todo-container`}>
             <input id={props.id}
                 type="checkbox"
                 className="todo-item"

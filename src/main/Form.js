@@ -37,7 +37,7 @@ function Form(props) {
     }, [])
 
     return (
-        <form onSubmit={handleSubmit} className='form'>
+        <form onSubmit={handleSubmit} className={`form`}>
             <div className="search-container">
                 <label htmlFor='new-todo' className='lbl-new-todo'>Create a new todo...</label>
                 <input type="text"

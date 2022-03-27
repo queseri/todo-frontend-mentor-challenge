@@ -1,15 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState , useContext } from 'react'
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import { nanoid } from "nanoid";
+import { ThemeContext } from '../context/context';
 import FilterButton from './FilterButton';
 import Todo from './Todo'
 import Form from './Form';
 
 function Main(props) {
-    // console.log(props)
+    const { theme } = useContext(ThemeContext) 
     const [tasks, setTasks] = useState(props.tasks)
     const [filter, setFilter] = useState('All')
-
+    //console.log(theme)
     const FILTER_MAP = {
         All: () => true,
         Active: task => !task.completed,
@@ -67,6 +68,7 @@ function Main(props) {
                 toggleTaskCompleted={toggleTaskCompleted}
                 deleteTask={deleteTask}
                 editTask={editTask}
+               
             />
         ));
 
@@ -100,7 +102,7 @@ function Main(props) {
     const headingTitle = `${taskList.length} ${tasksNoun} left`
 
     return (
-        <div className='main'>
+        <div className={`main`}>
             <Form addTask={addTask} />
             <DragDropContext onDragEnd={handleOnDragEnd}>
                 <Droppable droppableId='tasks'>
