@@ -49,3 +49,10 @@ $clr-dk-very-dark-grayish-blue3: hsl(237, 14%, 26%);
     justify-content: space-between;
     align-content: center;
 }
+
+$colors: (
+    "primary": $clr-white,
+    "very-light-grey": $clr-very-light-gray
+);
+
+@debug map-get($colors , "purple")

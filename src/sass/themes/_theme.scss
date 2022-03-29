@@ -1,6 +1,10 @@
 @use '../base';
 @use '../utils';
 
+.app {
+    background-color: base.$clr-very-light-gray;
+}
+
 .hide-theme-img {
     display: none;
 }
