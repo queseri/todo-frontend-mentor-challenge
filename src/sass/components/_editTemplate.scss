@@ -17,6 +17,14 @@
 .todo-edit-save {
     flex: 1 1 50%;
     padding: .5rem;
-	border: .2rem solid base.$clr-dk-very-dark-grayish-blue3;
-	background: base.$clr-light-grayish-blue;
+    border: .2rem solid base.$clr-dk-very-dark-grayish-blue3;
+    background: base.$clr-light-grayish-blue;
+
+    &:focus,
+    &:hover {
+        color: base.$clr-bright-blue;
+        cursor: pointer;
+        outline: dashed currentColor;
+        outline-offset: 0.15em;
+    }
 }

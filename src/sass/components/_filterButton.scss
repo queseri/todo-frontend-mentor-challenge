@@ -42,6 +42,7 @@
 
 .clear-items-btn {
     background-color: inherit;
+    color: base.$clr-dark-grayish-blue;
     border: none;
     outline: none;
     font-weight: 700;    
@@ -56,7 +57,9 @@
 }
 
 .label-filters {
+    color: base.$clr-dark-grayish-blue;
     font-weight: 700;
+    font-size: 0.875rem;
     position: absolute;
     left: 0;
     text-align: center;

@@ -71,8 +71,10 @@
         color: base.$clr-white;
     }
 
-    .todo+.todo {
-        border-top: 1px solid base.$clr-white;
+    .todo+.todo {        
+        &::before {            
+            background-color: base.$clr-white;           
+        }
     }
 
     .summary {

@@ -73,7 +73,7 @@ input[type="checkbox"] {
     width: 1.25rem;
     height: 1.25rem;
     border: 0.15em solid currentColor;
-   
+
     border-radius: 0.15em;
     transform: translateY(-0.075em);
     border-radius: 50%;
@@ -116,7 +116,7 @@ input[type="checkbox"]:checked {
 
 .todo-label {
     font-size: 0.75rem;
-
+    color: base.$clr-dark-grayish-blue;
     @include utils.mQ(43.75rem) {
         font-size: 1.125rem;
     }
@@ -129,7 +129,7 @@ input[type="checkbox"]:checked {
     padding-inline: 1.25rem;
     padding-block: 1.5rem;
     border-radius: 5px;
-  //  box-shadow: 3px 3px 3px 12px base.$clr-very-light-grayish;
+    //  box-shadow: 3px 3px 3px 12px base.$clr-very-light-grayish;
 
     @include utils.mQ(68.75rem) {
         top: -5.8rem;
@@ -137,10 +137,19 @@ input[type="checkbox"]:checked {
 }
 
 .todo+.todo {
-    margin-top: 1rem;
-    border-top: 1px solid base.$clr-very-dark-grayish-blue2;
-   // width: 100% + 2.5rem;
+    position: relative;
+    margin-top: 1rem;  
     padding-block: 1rem;
+    &::before {
+        position: absolute;
+        content: "";
+        height: 1px;
+        width: calc(100% + 2.5rem);
+        margin-left: -1.25rem;
+        background-color: base.$clr-very-dark-grayish-blue2;
+        left: 0;
+        top: 0;
+    }
 }
 
 .line-through {

@@ -22,7 +22,8 @@
 }
 
 .completed {
-    grid-area: 1/1/1/3;      
+    grid-area: 1/1/1/3; 
+    color: base.$clr-dark-grayish-blue;     
     background-color: base.$clr-white;
     border-bottom-left-radius: 5px;
     padding-inline-start: 1.5rem;
