@@ -27,16 +27,9 @@ export const ThemeProvider = (props) => {
     /* Set theme state to saved theme in local storage */
     
     useEffect(() => {
-        const app = document.querySelector('.app')
-        console.log(app)
-        console.log(theme)
-        //const lightBtn = document.querySelector('#light')
-       // const darkBtn = document.querySelector('#dark')
-        setTheme(getThemeFromLocalStorage())
-            
+        const app = document.querySelector('.app')      
+        setTheme(getThemeFromLocalStorage())            
         theme ? app.classList.remove("dark-theme") : app.classList.add("dark-theme")
-
-
     }, [theme])
 
 

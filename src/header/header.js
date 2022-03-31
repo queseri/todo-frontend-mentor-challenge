@@ -16,8 +16,7 @@ function Header() {
                     <img className={`light-theme-img ${theme ? "hide-theme-img" : ""}`} src={ThemeImgMoon} alt="" />
                     <img className={`dark-theme-img ${theme ? "" : "hide-theme-img"}`} src={ThemeImgSun} alt="" />
                 </button>
-            </nav>
-            
+            </nav>            
         </header>
     )
 }

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
+import ReactTooltip from 'react-tooltip'
 
 function Form(props) {
     const [name, setName] = useState("")
@@ -11,11 +12,11 @@ function Form(props) {
         evt.preventDefault()
         console.log("event checked")
         if (name === "") return alert("enter a valid todo")
-        if (name.length < 5) return alert ("A good todo item should have at least 5 letters")
-        if (name.length > 50) return alert ("Write a short todo item of less that 50 characters")
-        
+        if (name.length < 5) return alert("A good todo item should have at least 5 letters")
+        if (name.length > 50) return alert("Write a short todo item of less that 50 characters")
+
         props.addTask(name)
-        setName("")       
+        setName("")
     }
 
     const handleFocus = (evt) => {
@@ -30,10 +31,10 @@ function Form(props) {
         }
     }
 
-    useEffect(() => {      
+    useEffect(() => {
         inputEl.current.value.trim("") !== "" ?
             inputEl.current.parentNode.classList.add('active') :
-            inputEl.current.parentNode.classList.remove('active')       
+            inputEl.current.parentNode.classList.remove('active')
     }, [])
 
     return (
@@ -50,8 +51,10 @@ function Form(props) {
                     value={name}
                     ref={inputEl}
                     onChange={handleChange} />
-                <button type="submit" className='btn btn-submit '>
+                <button type="submit" className='btn btn-submit'
+                    data-tip='enter a todo with length between 5 and 50 characters'>
                     <span className='sr-only'>add</span>
+                    <ReactTooltip />
                 </button>
             </div>
         </form>
