@@ -8,7 +8,7 @@ import FilterButton from './FilterButton';
 import Todo from './Todo'
 import Form from './Form';
 
-function Main(props) {
+function Main() {
 
     const [filter, setFilter] = useState('All') 
     const [tasks, setTasks] = useState(null)
@@ -145,7 +145,7 @@ function Main(props) {
 
 
     return (
-        <div className={`main`}>
+        <main className={`main`}>
             <Form addTask={addTask} />
             <DragDropContext onDragEnd={handleOnDragEnd}>
                 <Droppable droppableId='tasks'>
@@ -179,7 +179,7 @@ function Main(props) {
                 </p>
             </div>
 
-        </div>
+        </main>
     )
 }
 
