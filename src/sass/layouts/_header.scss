@@ -19,9 +19,11 @@
 .main-title {
     color: hsla(0, 0%, 100%, 1);
     text-transform: uppercase;
+    letter-spacing: 12px;
 
     @include utils.mQ(43.75rem) {
         font-size: 2.5rem;
+        letter-spacing: 15px;
     }
 }
 

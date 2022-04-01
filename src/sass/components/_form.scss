@@ -16,10 +16,15 @@
     color: base.$clr-dark-grayish-blue;
     position: absolute;
     left: 2rem;
-    top: -1rem;
+    top: -0.75rem;
+    font-size: 0.75rem;
     transform-origin: top left;
     transform: translate(1rem, 1.8rem) scale(1);
     transition: all 0.1s ease-in-out;
+
+    @include utils.mQ(43.75rem) {
+        font-size: 1.125rem;
+    }
 }
 
 .new-todo {
@@ -27,11 +32,16 @@
     padding-inline: 1rem;
     padding-block: 0.75rem;
     border-radius: 5px;
+    font-size: 0.75rem;
     outline: none;
     border: none;
     padding-inline-start: 3rem;
     color: base.$clr-dk-very-dark-grayish-blue2;
     background-color: base.$clr-white;
+
+    @include utils.mQ(43.75rem) {
+        font-size: 1.125rem;
+    }
 }
 
 .btn-submit {
