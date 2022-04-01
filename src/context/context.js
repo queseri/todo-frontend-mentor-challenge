@@ -1,5 +1,6 @@
 import { useState, createContext, useEffect } from 'react'
 
+
 export const ThemeContext = createContext()
 
 export const ThemeProvider = (props) => {
@@ -10,6 +11,7 @@ export const ThemeProvider = (props) => {
     }
 
     const [theme, setTheme] = useState(getThemeFromLocalStorage)
+   
 
     /* Post to localStorage user preferred theme. */
     const postThemeToLocalStorage = (newTheme) => {
@@ -17,21 +19,19 @@ export const ThemeProvider = (props) => {
     }
     /* Click handler */
     const onChange = () => {
-        
         postThemeToLocalStorage(!theme)
-        setTheme(!theme)    
-
+        setTheme(!theme)
     }
-
+    
     /* Trigger useEffect only on render */
     /* Set theme state to saved theme in local storage */
-    
-    useEffect(() => {
-        const app = document.querySelector('.app')      
-        setTheme(getThemeFromLocalStorage())            
-        theme ? app.classList.remove("dark-theme") : app.classList.add("dark-theme")
-    }, [theme])
 
+    useEffect(() => {
+        const app = document.querySelector('.app')
+        setTheme(getThemeFromLocalStorage())
+        theme ? app.classList.remove("dark-theme") : app.classList.add("dark-theme")
+    }, [theme])  
+   
 
     return (
         <ThemeContext.Provider value={{ theme, onChange }}>

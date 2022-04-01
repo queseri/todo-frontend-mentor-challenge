@@ -20,9 +20,7 @@ function Todo(props) {
         props.editTask(props.id, newName);
         setNewName("");
         setEditing(false);
-    }
-
-    //${props.theme ? "" : "dark-theme-form"}
+    }   
 
     const editingTemplate = (
         <form className={`todo-container`} 

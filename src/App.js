@@ -2,7 +2,6 @@ import React from 'react'
 import './sass/app.scss';
 import Header from './header/header'
 import { ThemeProvider } from './context/context';
-
 import Main from './main/Main';
 
 function App() {

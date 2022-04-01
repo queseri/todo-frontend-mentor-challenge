@@ -1,15 +1,58 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
+import * as Realm from 'realm-web'
+//import { ThemeContext } from '../context/context'
+import { Audio } from 'react-loader-spinner'
 import { nanoid } from "nanoid";
 import FilterButton from './FilterButton';
 import Todo from './Todo'
 import Form from './Form';
 
 function Main(props) {
-  
-    const [tasks, setTasks] = useState(props.tasks)
-    const [filter, setFilter] = useState('All')
-   
+
+    const [filter, setFilter] = useState('All') 
+    const [tasks, setTasks] = useState(null)
+    const [error, setError] = useState(null);
+    const [fetchStatus, setFetchStatus] = useState('idle')
+   // const [todos, setTodos] = useState([])
+
+    const fetchData = async () => {
+        setFetchStatus("loading")
+        const REALM_APP_ID = "todos-xirtb"
+        const app = new Realm.App({ id: REALM_APP_ID });
+        const credentials = Realm.Credentials.anonymous();
+
+        try {
+            const user = await app.logIn(credentials);
+            const allTodos = await user.functions.getAllTodos()
+            setTasks(await allTodos)
+            setFetchStatus("success")        
+
+        } catch (err) {
+            setError(err)
+            setFetchStatus("error")
+            console.error(err);
+        }
+    }
+
+    useEffect(() => {
+        fetchData()
+        setFetchStatus("success")
+    }, [])
+
+
+    if (fetchStatus === 'idle' || fetchStatus === 'loading' || tasks === null ) {
+        return <div className='loading'>
+            <Audio color="#00BFFF" height={160} width={160} />
+        </div>
+    }
+
+    if (fetchStatus === error) {
+        return <div className='loading loading-error'>
+            <p className='loading-title loading-error-title'>Something went wrong!!</p>
+        </div>
+    }
+
     const FILTER_MAP = {
         All: () => true,
         Active: task => !task.completed,
@@ -17,9 +60,9 @@ function Main(props) {
     };
 
     const FILTER_NAMES = Object.keys(FILTER_MAP);
-    
+
     function toggleTaskCompleted(id) {
-        const updatedTasks = tasks.map(task => {
+        const updatedTasks = tasks && tasks.map(task => {
             // if this task has the same ID as the edited task
             if (id === task.id) {
                 return { ...task, completed: !task.completed }
@@ -31,7 +74,7 @@ function Main(props) {
 
     function resetTask() {
         const allTodos = Array.from(document.querySelectorAll(".todo-item"))
-        const updatedTasks = tasks.map((task) => {
+        const updatedTasks = tasks && tasks.map((task) => {
             return { ...task, completed: false }
         })
         console.log(tasks)
@@ -40,7 +83,7 @@ function Main(props) {
     }
 
     function deleteTask(id) {
-        const remainingTasks = tasks.filter(task => id !== task.id);
+        const remainingTasks = tasks && tasks.filter(task => id !== task.id);
         setTasks(remainingTasks);
     }
 
@@ -54,7 +97,7 @@ function Main(props) {
         setTasks(editedTasksList)
     }
 
-    const taskList = tasks
+    const taskList = tasks && tasks
         .filter(FILTER_MAP[filter])
         .map((task, idx) => (
             <Todo
@@ -66,7 +109,7 @@ function Main(props) {
                 toggleTaskCompleted={toggleTaskCompleted}
                 deleteTask={deleteTask}
                 editTask={editTask}
-               
+
             />
         ));
 
@@ -82,7 +125,9 @@ function Main(props) {
 
     function addTask(name) {
         const newTask = {
-            id: "todo-" + nanoid(), name: name, completed: false,
+            id: "todo-" + nanoid(),
+            name: name,
+            completed: false,
             key: "todo-" + nanoid()
         };
         setTasks([...tasks, newTask]);
@@ -98,6 +143,7 @@ function Main(props) {
 
     const tasksNoun = taskList.length !== 1 ? 'tasks' : 'task'
     const headingTitle = `${taskList.length} ${tasksNoun} left`
+
 
     return (
         <div className={`main`}>
@@ -123,12 +169,15 @@ function Main(props) {
                     {filterList}
                 </div>
                 <div className="container-btn-clear">
-                    <button className='clear-items-btn' onClick={resetTask}>Clear completed</button>
+                    <button className='clear-items-btn' onClick={resetTask}>
+                        Clear completed
+                    </button>
                 </div>
             </div>
             <div className="drag-and-drop">
-
-                <p className='instructions'>Drag and drop to reorder list</p>
+                <p className='instructions'>
+                    Drag and drop to reorder list
+                </p>
             </div>
 
         </div>

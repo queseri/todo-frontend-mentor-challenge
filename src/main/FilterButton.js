@@ -11,7 +11,9 @@ function FilterButton(props) {
                 value={props.name}
                 defaultChecked={props.isPressed}
                 onChange={() => props.setFilter(props.name)} />
-            <label htmlFor={props.name} className='label-filters'>{props.name}</label>
+            <label htmlFor={props.name} className='label-filters'>
+                {props.name}
+            </label>
         </div>
 
     )

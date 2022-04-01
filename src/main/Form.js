@@ -40,7 +40,10 @@ function Form(props) {
     return (
         <form onSubmit={handleSubmit} className={`form`}>
             <div className="search-container">
-                <label htmlFor='new-todo' className='lbl-new-todo'>Create a new todo...</label>
+                <label htmlFor='new-todo'
+                    className='lbl-new-todo'>
+                    Create a new todo...
+                </label>
                 <input type="text"
                     name="text"
                     id='new-todo'
@@ -52,6 +55,7 @@ function Form(props) {
                     ref={inputEl}
                     onChange={handleChange} />
                 <button type="submit" className='btn btn-submit'
+                    data-delay-hide='100'
                     data-tip='enter a todo with length between 5 and 50 characters'>
                     <span className='sr-only'>add</span>
                     <ReactTooltip />
