@@ -14,8 +14,7 @@ function Main(props) {
     const [tasks, setTasks] = useState(null)
     const [error, setError] = useState(null);
     const [fetchStatus, setFetchStatus] = useState('idle')
-   // const [todos, setTodos] = useState([])
-
+ 
     const fetchData = async () => {
         setFetchStatus("loading")
         const REALM_APP_ID = "todos-xirtb"
