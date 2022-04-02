@@ -1,20 +1,19 @@
 import React, { useState, useEffect } from 'react'
-import { DragDropContext, Droppable } from 'react-beautiful-dnd';
+import { DragDropContext, Droppable } from 'react-beautiful-dnd'
 import * as Realm from 'realm-web'
-//import { ThemeContext } from '../context/context'
 import { Audio } from 'react-loader-spinner'
-import { nanoid } from "nanoid";
-import FilterButton from './FilterButton';
+import { nanoid } from "nanoid"
+import FilterButton from './FilterButton'
 import Todo from './Todo'
-import Form from './Form';
+import Form from './Form'
 
 function Main() {
 
-    const [filter, setFilter] = useState('All') 
+    const [filter, setFilter] = useState('All')
     const [tasks, setTasks] = useState(null)
-    const [error, setError] = useState(null);
+    const [error, setError] = useState(null)
     const [fetchStatus, setFetchStatus] = useState('idle')
- 
+
     const fetchData = async () => {
         setFetchStatus("loading")
         const REALM_APP_ID = "todos-xirtb"
@@ -25,7 +24,7 @@ function Main() {
             const user = await app.logIn(credentials);
             const allTodos = await user.functions.getAllTodos()
             setTasks(await allTodos)
-            setFetchStatus("success")        
+            setFetchStatus("success")
 
         } catch (err) {
             setError(err)
@@ -40,7 +39,7 @@ function Main() {
     }, [])
 
 
-    if (fetchStatus === 'idle' || fetchStatus === 'loading' || tasks === null ) {
+    if (fetchStatus === 'idle' || fetchStatus === 'loading' || tasks === null) {
         return <div className='loading'>
             <Audio color="#00BFFF" height={160} width={160} />
         </div>
@@ -76,7 +75,6 @@ function Main() {
         const updatedTasks = tasks && tasks.map((task) => {
             return { ...task, completed: false }
         })
-        console.log(tasks)
         allTodos.forEach(todo => todo.checked = false)
         setTasks(updatedTasks)
     }
@@ -142,7 +140,6 @@ function Main() {
 
     const tasksNoun = taskList.length !== 1 ? 'tasks' : 'task'
     const headingTitle = `${taskList.length} ${tasksNoun} left`
-
 
     return (
         <main className={`main`}>

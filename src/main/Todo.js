@@ -11,20 +11,20 @@ function Todo(props) {
     }
 
     function handleSubmit(e) {
-        e.preventDefault();
+        e.preventDefault()
 
         if (newName.trim("") === "") return alert("Enter a valid todo item")
-        if (newName.length < 5) return alert ("A good todo item should have at least 5 letters")
-        if (newName.length > 50) return alert ("Write a short todo item of less that 50 characters")
-        console.log(newName.length)
+        if (newName.length < 5) return alert("A good todo item should have at least 5 letters")
+        if (newName.length > 50) return alert("Write a short todo item of less that 50 characters")
+
         props.editTask(props.id, newName);
         setNewName("");
         setEditing(false);
-    }   
+    }
 
     const editingTemplate = (
-        <form className={`todo-container`} 
-        onSubmit={handleSubmit}>
+        <form className={`todo-container`}
+            onSubmit={handleSubmit}>
             <div className="form-group-edit">
                 <label className="todo-label" htmlFor={props.id}>
                     {`New name for "${props.name}"`}
@@ -36,11 +36,14 @@ function Todo(props) {
                     onChange={handleChange} />
             </div>
             <div className="container-group-edit">
-                <button type="button" className="btn todo-edit-cancel" onClick={() => setEditing(false)}>
+                <button type="button"
+                    className="btn todo-edit-cancel"
+                    onClick={() => setEditing(false)}>
                     Cancel
                     <span className="sr-only">renaming {props.name}</span>
                 </button>
-                <button type="submit" className="btn btn__primary todo-edit-save">
+                <button type="submit"
+                    className="btn btn__primary todo-edit-save">
                     Save
                     <span className="sr-only">new name for {props.name}</span>
                 </button>
