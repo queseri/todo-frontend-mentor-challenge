@@ -57,9 +57,9 @@ function Form(props) {
                 <button type="submit" className='btn btn-submit'
                     data-delay-hide='100'
                     data-tip='enter a todo with length between 5 and 50 characters'>
-                    <span className='sr-only'>add</span>
-                    <ReactTooltip />
+                    <span className='sr-only'>add</span>                  
                 </button>
+                <ReactTooltip />
             </div>
         </form>
     )
