@@ -25,7 +25,7 @@ function Main() {
             const allTodos = await user.functions.getAllTodos()
             setTasks(await allTodos)
             setFetchStatus("success")
-
+            console.log(allTodos)
         } catch (err) {
             setError(err)
             setFetchStatus("error")
@@ -71,11 +71,7 @@ function Main() {
     }
 
     function resetTask() {
-        const allTodos = Array.from(document.querySelectorAll(".todo-item"))
-        const updatedTasks = tasks && tasks.map((task) => {
-            return { ...task, completed: false }
-        })
-        allTodos.forEach(todo => todo.checked = false)
+        const updatedTasks = tasks && tasks.filter(task => task.completed !== true)
         setTasks(updatedTasks)
     }
 

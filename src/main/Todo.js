@@ -65,7 +65,8 @@ function Todo(props) {
             </label>
 
             <button className={`btn-edit ${!props.completed ? "btn-hide" : ""}`}
-                onClick={() => setEditing(true)}>Edit</button>
+                onClick={() => setEditing(true)}>Edit
+            </button>
 
             <button className={`delete-btn ${!props.completed ? "btn-hide" : ""}`}
                 onClick={() => props.deleteTask(props.id)}>
