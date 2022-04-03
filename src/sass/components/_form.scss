@@ -82,7 +82,7 @@ input[type="checkbox"] {
     color: currentColor;
     width: 1.25rem;
     height: 1.25rem;
-    border: 0.15em solid currentColor;   
+    border: 0.05em solid base.$clr-very-light-grayish;   
     transform: translateY(-0.075em);
     border-radius: 50%;
     transition: 120ms all ease-out;
@@ -153,7 +153,7 @@ input[type="checkbox"]:checked {
         height: 1px;
         width: calc(100% + 2.5rem);
         margin-left: -1.25rem;
-        background-color: base.$clr-very-dark-grayish-blue2;
+        background-color: base.$clr-dark-grayish-blue;
         left: 0;
         top: 0;
     }

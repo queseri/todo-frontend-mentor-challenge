@@ -48,6 +48,10 @@
         color: base.$clr-white;
     }
 
+    input[type="checkbox"] {
+        background-color: base.$clr-very-dark-desaturated-blue;
+    }
+
     .btn-edit,
     .clear-items-btn {
         color: base.$clr-white;
