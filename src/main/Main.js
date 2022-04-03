@@ -41,7 +41,7 @@ function Main() {
 
     if (fetchStatus === 'idle' || fetchStatus === 'loading' || tasks === null) {
         return <div className='loading'>
-            <Audio color="#00BFFF" height={160} width={160} />
+            <Audio color="#00BFFF" height={160} width={160} ariaLabel='loading' />
         </div>
     }
 
