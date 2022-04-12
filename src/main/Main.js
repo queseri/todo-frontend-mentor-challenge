@@ -12,7 +12,7 @@ function Main() {
     const [filter, setFilter] = useState('All')
     const [tasks, setTasks] = useState(null)
     const [error, setError] = useState(null)
-    const [fetchStatus, setFetchStatus] = useState('idle')
+    const [fetchStatus, setFetchStatus] = useState('idle')   
 
     const fetchData = async () => {
         setFetchStatus("loading")
@@ -31,13 +31,13 @@ function Main() {
             setFetchStatus("error")
             console.error(err);
         }
-    }
+    }    
 
     useEffect(() => {
         fetchData()
         setFetchStatus("success")
     }, [])
-
+   
 
     if (fetchStatus === 'idle' || fetchStatus === 'loading' || tasks === null) {
         return <div className='loading'>
@@ -135,8 +135,8 @@ function Main() {
     }
 
     const tasksNoun = taskList.length !== 1 ? 'tasks' : 'task'
-    const headingTitle = `${taskList.length} ${tasksNoun} left`
-
+    const headingTitle = `${taskList.length} ${tasksNoun} left`    
+   
     return (
         <main className={`main`}>
             <Form addTask={addTask} />
